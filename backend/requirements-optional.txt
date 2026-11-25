@@ -1,0 +1,8 @@
+# Optional extras - install only what you need:
+#   pip install -r requirements-optional.txt
+
+# Phase 2: number plate OCR (set PLATE_OCR=1 in .env), and rules that read numbers/text (text_pattern)
+easyocr>=1.7
+
+# Phase 3.5: semantic prompt search with CLIP embeddings (set EMBEDDINGS=1 in .env)
+open_clip_torch>=2.24

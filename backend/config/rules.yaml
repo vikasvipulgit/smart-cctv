@@ -1,0 +1,123 @@
+rules:
+- id: person_in_gate
+  name: Person in gate area
+  enabled: false
+  cameras: []
+  classes:
+  - person
+  zone: gate_area
+  colors: []
+  plates: []
+  min_dwell_seconds: 0.0
+  cooldown_seconds: 30.0
+  min_confidence: 0.0
+  channels:
+  - websocket
+  - telegram
+  per_camera: false
+- id: vehicle_in_gate
+  name: Vehicle in gate area
+  enabled: false
+  cameras: []
+  classes:
+  - car
+  - truck
+  - bus
+  - motorcycle
+  zone: gate_area
+  colors: []
+  plates: []
+  min_dwell_seconds: 0.0
+  cooldown_seconds: 60.0
+  min_confidence: 0.0
+  channels:
+  - websocket
+  - telegram
+  per_camera: false
+- id: white_car_watch
+  name: White car seen
+  enabled: false
+  cameras: []
+  classes:
+  - car
+  colors:
+  - white
+  plates: []
+  min_dwell_seconds: 0.0
+  cooldown_seconds: 120.0
+  min_confidence: 0.0
+  channels:
+  - websocket
+  per_camera: false
+- id: plate_watchlist
+  name: Watchlisted number plate
+  enabled: false
+  cameras: []
+  classes:
+  - car
+  - truck
+  - bus
+  - motorcycle
+  colors: []
+  plates:
+  - MH12AB1234
+  min_dwell_seconds: 0.0
+  cooldown_seconds: 300.0
+  min_confidence: 0.0
+  channels:
+  - websocket
+  - telegram
+  - email
+  per_camera: false
+- id: night_intrusion
+  name: Person after midnight
+  enabled: false
+  cameras: []
+  classes:
+  - person
+  colors: []
+  plates: []
+  min_dwell_seconds: 5.0
+  time_window:
+    start: 00:00
+    end: 06:00
+  cooldown_seconds: 120.0
+  min_confidence: 0.0
+  channels:
+  - websocket
+  - telegram
+  - sms
+  per_camera: false
+- id: person_seen
+  name: Person seen
+  enabled: true
+  cameras:
+  - webcam
+  classes:
+  - person
+  zone: zone_1
+  colors: []
+  plates: []
+  min_dwell_seconds: 0.0
+  cooldown_seconds: 10.0
+  min_confidence: 0.5
+  channels:
+  - websocket
+  per_camera: true
+  message: Person seen in {zone} on {camera}
+- id: number_seen
+  name: Number seen
+  enabled: true
+  cameras:
+  - webcam
+  classes: []
+  colors: []
+  plates: []
+  min_dwell_seconds: 0.0
+  cooldown_seconds: 5.0
+  min_confidence: 0.4
+  channels:
+  - websocket
+  text_pattern: \d{2,}
+  per_camera: false
+  message: 'Number seen: {text}'

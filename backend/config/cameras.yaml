@@ -1,0 +1,40 @@
+# Cameras to watch.
+#
+# source can be:
+#   "synthetic"                - built-in test pattern (no hardware needed; use with DETECTOR=mock)
+#   "0"                        - your Mac's webcam (or "1" for a USB webcam)
+#   "/path/to/traffic.mp4"     - a video file (loops forever)
+#   "${GATE_RTSP_URL}"         - an RTSP camera; put the real URL in .env so the password stays out of this file
+#
+# Use the camera's SUB-stream for analysis (lower resolution = faster).
+# Zone points are normalised (0..1) x,y coordinates of a polygon on the image:
+#   [0,0] = top-left, [1,1] = bottom-right.
+
+cameras:
+  - id: demo
+    name: Demo camera
+    source: "synthetic"
+    enabled: false
+    fps: 6
+    zones:
+      - name: gate_area
+        points: [[0.0, 0.2688], [0.6, 0.2688], [0.6, 0.9188], [0.0, 0.9188]]
+
+  # - id: gate
+  #   name: Main gate
+  #   source: "${GATE_RTSP_URL}"
+  #   enabled: true
+  #   fps: 6
+  #   zones:
+  #     - name: gate_area
+  #       points: [[0.10, 0.50], [0.90, 0.50], [0.90, 0.98], [0.10, 0.98]]
+
+  - id: webcam
+    name: Mac webcam
+    source: "0"
+    enabled: false
+    fps: 5
+    zones:
+      - name: zone_1
+        points: [[0.2935, 0.0325], [0.982, 0.0163], [0.986, 0.0159], [0.9781, 0.9382], [0.27, 0.9835]]
+        anchor: overlap

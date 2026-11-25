@@ -1,0 +1,18 @@
+# Core web backend
+fastapi>=0.115
+uvicorn[standard]>=0.30
+sqlalchemy>=2.0
+pydantic>=2.7
+python-dotenv>=1.0
+pyyaml>=6.0
+ruamel.yaml>=0.18     # round-trip YAML: saving zones keeps the comments in cameras.yaml
+httpx>=0.27
+
+# Video + AI
+numpy>=1.26
+opencv-python>=4.10
+ultralytics>=8.3        # YOLO detection + ByteTrack tracking (AGPL-3.0, see docs)
+lapx>=0.5.9             # needed by ByteTrack
+
+# Tests
+pytest>=8.0
